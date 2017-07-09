@@ -1,4 +1,8 @@
+# Image Search Microservice 
+## by Steven Black ![@Sblack4](https://avatars0.githubusercontent.com/Sblack4)
 
+Mad props to [Rafase282](https://github.com/Rafase282/Image-Search-Abstraction-Layer) for providing a good template. 
+I was unsure of what API to use for the image search.  
 
 -----
 *Original README from Glitch*
