@@ -4,22 +4,31 @@ const app = express();
 var host = process.env.IP || 'localhost';
 var port = process.env.PORT || 80;
 
-app.get("/latest", (request, response) => {
+function start() {
   
-});
-
-
-app.get("/imagesearch/:query", (request, response) => {
+  app.get("/", (request, response) => {
+    response.end("try going to /latest");
+  });
   
-});
+  app.get("/latest", (request, response) => {
+    response.end("latest");
+  });
 
-/**
- * Listen for requests
- */
-app.listen(port, function(err, data) {
-  if (err) {
-    console.log("Error starting express on port " + port);
-    console.log(err);
-  }
-  console.log("express on port " + port);
-});
+
+  app.get("/imagesearch/:query", (request, response) => {
+    response.end(request.params.query.toString());
+  });
+
+  /**
+   * Listen for requests
+   */
+  app.listen(port, function(err, data) {
+    if (err) {
+      console.log("Error starting express on port " + port);
+      console.log(err);
+    }
+    console.log("express on port " + port);
+  });
+}
+
+module.exports = start;
