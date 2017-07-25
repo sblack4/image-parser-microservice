@@ -1,30 +1,21 @@
 
 // imports 
-const mongodb = require('mongodb');
+var MongoClient = require('mongodb').MongoClient;
 const app = require("./app.js");
 
 // globals 
-const host = process.env.IP || 'localhost';
-const port = process.env.PORT || 80;
 const mongoURI = "mongodb://user:password@ds111123.mlab.com:11123/image-parser-microservice";
-
-var MongoClient = require('mongodb').MongoClient;
 var db;
+var collection;
 
 // Initialize connection once
 MongoClient.connect(mongoURI, function(err, database) {
-  if(err) throw err;
+  if(err){
+    console.log(err);
+  }
 
   db = database;
+  collection = db.collection("history");
 
-  /**
-   * Listen for requests
-   */
-  app.listen(port, function(err, data) {
-    if (err) {
-      console.log("Error starting express on port " + port);
-      console.log(err);
-    }
-    console.log("express on port " + port);
-  });
+  app(collection);
 });
