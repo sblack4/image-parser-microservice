@@ -16,7 +16,10 @@ function start() {
 
 
   app.get("/imagesearch/:query", (request, response) => {
-    response.end(request.params.query.toString());
+    const search_term = request.params.query.toString();
+    const offset = request.query.offset;
+    
+    response.end(request.params.query.toString()+ " query str " + request.query.offset);
   });
 
   /**
