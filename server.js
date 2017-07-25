@@ -1,7 +1,6 @@
 
 // imports 
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongodb = require('mongodb');
 const express_app = require("./app.js");
 
 // globals 
@@ -17,4 +16,4 @@ const history_schema = new Schema({
 const History = mongoose.model('History', history_schema);
 mongoose.connect(mongoURI);
 
-express_app();
+express_app(History);
